@@ -1,7 +1,7 @@
-name: NerfPhantoms
+name: phantom
 version: ${project.version}
-main: com.tallcraft.nerfphantoms.NerfPhantoms
-prefix: NerfPhantoms
+main: com.tallcraft.phantom.phantom
+prefix: phantom
 authors: [Tallcraft, Metype]
 description: Nerf Phantom monsters
 website: https://tallcraft.com
@@ -9,34 +9,34 @@ api-version: 1.13
 softdepend: [MultiverseCore]
 load: POSTWORLD
 commands:
-  nerfphantoms:
-    usage: /nerfphantoms <help | togglespawn | kill | reload>
+  phantom:
+    usage: /phantom <help | toggle | kill | reload>
     permission-message: You don't have permission.
 permissions:
-  nerfphantoms.*:
-    description: Gives access to all NerfPhantoms commands
+  phantom.*:
+    description: Gives access to all phantom commands
     default: op
     children:
-      nerfphantoms.all: true
-  nerfphantoms.all:
-    description: Gives access to all NerfPhantoms commands
+      phantom.all: true
+  phantom.all:
+    description: Gives access to all phantom commands
     children:
-      nerfphantoms.reload: true
-      nerfphantoms.kill: true
-      nerfphantoms.disablespawn.self: true
-      nerfphantoms.disablespawn.others: true
-  nerfphantoms.reload:
+      phantom.reload: true
+      phantom.kill: true
+      phantom.disablespawn.self: true
+      phantom.disablespawn.others: true
+  phantom.reload:
     description: Reload plugin config
     default: false
-  nerfphantoms.kill:
+  phantom.kill:
     description: Kill all phantoms in current world
     default: false
-  nerfphantoms.disablespawn.self:
+  phantom.disablespawn.self:
     description: Command to disable phantom spawning for self
     default: op
-  nerfphantoms.disablespawn.others:
+  phantom.disablespawn.others:
     description: Command to disable phantom spawning for other players
     default: op
-  nerfphantoms.disablespawn.auto:
+  phantom.disablespawn.auto:
     description: Phantom spawn disable active by default for player
     default: false

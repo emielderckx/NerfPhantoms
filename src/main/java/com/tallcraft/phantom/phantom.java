@@ -1,7 +1,8 @@
-package com.tallcraft.nerfphantoms;
+package com.tallcraft.phantom;
 
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Statistic;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -30,7 +31,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
-public final class NerfPhantoms extends JavaPlugin implements Listener {
+public final class phantom extends JavaPlugin implements Listener {
     private final Logger logger = Logger.getLogger(this.getName());
     private Storage storage;
     private FileConfiguration config;
@@ -56,7 +57,7 @@ public final class NerfPhantoms extends JavaPlugin implements Listener {
             }
         }
 
-        getCommand("nerfphantoms").setTabCompleter(new TabCompletion());
+        getCommand("phantom").setTabCompleter(new TabCompletion());
         getServer().getPluginManager().registerEvents(this, this);
         new StatResetTask(this).runTaskTimerAsynchronously(this, 0L, 1200L);
     }
@@ -71,7 +72,7 @@ public final class NerfPhantoms extends JavaPlugin implements Listener {
         assert (permissionMessage != null);
 
         if (args[0].equalsIgnoreCase("reload")) {
-            if (!sender.hasPermission("nerfphantoms.reload")) {
+            if (!sender.hasPermission("phantom.reload")) {
                 sender.sendMessage(permissionMessage);
                 return true;
             }
@@ -86,7 +87,7 @@ public final class NerfPhantoms extends JavaPlugin implements Listener {
         }
 
         if (args[0].equalsIgnoreCase("kill")) {
-            if (!sender.hasPermission("nerfphantoms.kill")) {
+            if (!sender.hasPermission("phantom.kill")) {
                 sender.sendMessage(permissionMessage);
                 return true;
             }
@@ -100,9 +101,9 @@ public final class NerfPhantoms extends JavaPlugin implements Listener {
             return true;
         }
 
-        if (args[0].equalsIgnoreCase("togglespawn")) {
+        if (args[0].equalsIgnoreCase("toggle")) {
             if (args.length == 1) {
-                if (!sender.hasPermission("nerfphantoms.disablespawn.self")) {
+                if (!sender.hasPermission("phantom.disablespawn.self")) {
                     sender.sendMessage(permissionMessage);
                     return true;
                 }
@@ -112,11 +113,11 @@ public final class NerfPhantoms extends JavaPlugin implements Listener {
                 }
                 Player player = (Player) sender;
                 boolean state = togglePhantomSpawn(player);
-                player.sendMessage((state ? "Disabled" : "Enabled")
+                player.sendMessage((state ? ChatColor.GRAY + "[Server] Disabled" : ChatColor.GRAY + "[Server] Enabled")
                         + " phantom spawn for " + player.getDisplayName() + ".");
                 return true;
             }
-            if (!sender.hasPermission("nerfphantoms.disablespawn.others")) {
+            if (!sender.hasPermission("phantom.disablespawn.others")) {
                 sender.sendMessage(permissionMessage);
                 return true;
             }
@@ -126,7 +127,7 @@ public final class NerfPhantoms extends JavaPlugin implements Listener {
                 return true;
             }
             boolean state = togglePhantomSpawn(victim);
-            sender.sendMessage((state ? "Disabled" : "Enabled")
+            sender.sendMessage((state ? ChatColor.GRAY + "[Server] Disabled" : ChatColor.GRAY + "[Server] Enabled")
                     + " phantom spawn for " + victim.getDisplayName() + ".");
             return true;
         }
@@ -232,7 +233,7 @@ public final class NerfPhantoms extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        if (player.hasPermission("nerfphantoms.disablespawn.auto")) {
+        if (player.hasPermission("phantom.disablespawn.auto")) {
             togglePhantomSpawn(player, false);
             return;
         }
@@ -325,7 +326,7 @@ public final class NerfPhantoms extends JavaPlugin implements Listener {
         db.set("type", "mysql");
         db.set("host", "localhost");
         db.set("port", 3306);
-        db.set("name", "nerfphantoms");
+        db.set("name", "phantom");
         db.set("username", "user");
         db.set("password", "123456");
 

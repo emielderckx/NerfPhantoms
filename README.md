@@ -1,7 +1,7 @@
-# NerfPhantoms
+# phantom
 Bukkit plugin which allows nerfing Phantom mobs introduced in Minecraft 1.13
 
-[SpigotMC plugin page](https://www.spigotmc.org/resources/nerfphantoms.59218/)
+[SpigotMC plugin page](https://www.spigotmc.org/resources/phantom.59218/)
 
 ## Configuration
 ``` yaml
@@ -40,7 +40,7 @@ fixedSize:
 database:
   enabled: false
   type: mysql
-  name: nerfphantoms
+  name: phantom
   host: localhost
   port: 3306
   username: root
@@ -48,38 +48,38 @@ database:
 ```
 
 ## Commands
-`/nerfphantoms reload`: Reload options from the configuration file\
-`/nerfphantoms kill`: Kill all Phantoms in your current world.\
-`/nerfphantoms togglespawn`: Toggle phantoms spawn for yourself.\
-`/nerfphantoms togglespawn <player>`: Toggle phantoms spawn for another player.
+`/phantom reload`: Reload options from the configuration file\
+`/phantom kill`: Kill all Phantoms in your current world.\
+`/phantom toggle`: Toggle phantoms spawn for yourself.\
+`/phantom toggle <player>`: Toggle phantoms spawn for another player.
 
 ## Permissions
 ``` yaml
-  nerfphantoms.*:
-    description: Gives access to all NerfPhantoms commands
+  phantom.*:
+    description: Gives access to all phantom commands
     default: op
     children:
-      nerfphantoms.all: true
-  nerfphantoms.all:
-    description: Gives access to all NerfPhantoms commands
+      phantom.all: true
+  phantom.all:
+    description: Gives access to all phantom commands
     children:
-      nerfphantoms.reload: true
-      nerfphantoms.kill: true
-      nerfphantoms.disablespawn.self: true
-      nerfphantoms.disablespawn.other: true
-  nerfphantoms.reload:
+      phantom.reload: true
+      phantom.kill: true
+      phantom.disablespawn.self: true
+      phantom.disablespawn.other: true
+  phantom.reload:
     description: Reload plugin config
     default: false
-  nerfphantoms.kill:
+  phantom.kill:
     description: Kill all phantoms in current world
     default: false
-  nerfphantoms.disablespawn.self:
+  phantom.disablespawn.self:
     description: Command to disable phantom spawning for self
     default: op
-  nerfphantoms.disablespawn.others:
+  phantom.disablespawn.others:
     description: Command to disable phantom spawning for other players
     default: op
-  nerfphantoms.disablespawn.auto:
+  phantom.disablespawn.auto:
     description: Phantom spawn disable active by default for player
     default: false
 ```

@@ -1,13 +1,13 @@
-package com.tallcraft.nerfphantoms;
+package com.tallcraft.phantom;
 
 import org.bukkit.Statistic;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class StatResetTask extends BukkitRunnable {
 
-    private NerfPhantoms plugin;
+    private phantom plugin;
 
-    StatResetTask(NerfPhantoms plugin) {
+    StatResetTask(phantom plugin) {
         this.plugin = plugin;
     }
 

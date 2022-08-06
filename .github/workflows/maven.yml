@@ -18,5 +18,5 @@ jobs:
       - name: Dev Build Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: NerfPhantoms
-          path: /home/runner/work/NerfPhantoms/NerfPhantoms/target/NerfPhantoms*.jar
+          name: phantom
+          path: /home/runner/work/phantom/phantom/target/phantom*.jar

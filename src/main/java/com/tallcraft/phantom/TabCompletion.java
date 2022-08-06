@@ -1,4 +1,4 @@
-package com.tallcraft.nerfphantoms;
+package com.tallcraft.phantom;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -12,19 +12,19 @@ import java.util.List;
 public class TabCompletion implements TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
-        if (cmd.getName().equalsIgnoreCase("nerfphantoms") && args.length == 1) {
+        if (cmd.getName().equalsIgnoreCase("phantom") && args.length == 1) {
             List<String> list = new ArrayList<>();
             list.add("help");
 
-            if (sender.hasPermission("nerfphantoms.disablespawn.self")) {
-                list.add("togglespawn");
+            if (sender.hasPermission("phantom.disablespawn.self")) {
+                list.add("toggle");
             }
 
-            if (sender.hasPermission("nerfphantoms.reload")) {
+            if (sender.hasPermission("phantom.reload")) {
                 list.add("reload");
             }
 
-            if (sender.hasPermission("nerfphantoms.kill")) {
+            if (sender.hasPermission("phantom.kill")) {
                 list.add("kill");
             }
 
